@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MovieFlix Analytics</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        form { margin: 10px 0; }
+        input, select, textarea { margin: 5px; padding: 8px; }
+        .rating-good { color: green; font-weight: bold; }
+        .rating-average { color: orange; font-weight: bold; }
+        .rating-poor { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 MovieFlix Analytics</h1>
+        
+        <div class="section">
+            <h2>Cadastrar Novo Filme</h2>
+            <form id="movieForm">
+                <input type="text" name="title" placeholder="Título" required>
+                <input type="text" name="genre" placeholder="Gênero" required>
+                <input type="number" name="release_year" placeholder="Ano" required>
+                <input type="text" name="director" placeholder="Diretor">
+                <input type="text" name="country" placeholder="País">
+                <button type="submit">Cadastrar Filme</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Avaliar Filme</h2>
+            <form id="ratingForm">
+                <select name="movie_id" required>
+                    <option value="">Selecione um filme</option>
+                </select>
+                <select name="user_id" required>
+                    <option value="">Selecione um usuário</option>
+                </select>
+                <input type="number" name="rating" min="1" max="5" placeholder="Nota (1-5)" required>
+                <textarea name="comment" placeholder="Comentário"></textarea>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Catálogo de Filmes</h2>
+            <table id="moviesTable">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Gênero</th>
+                        <th>Ano</th>
+                        <th>Diretor</th>
+                        <th>Nota Média</th>
+                        <th>Avaliações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 🔧 CORREÇÃO: Função para formatar a nota média de forma segura
+        function formatRating(avgRating) {
+            if (avgRating === null || avgRating === undefined || isNaN(avgRating)) {
+                return 'N/A';
+            }
+            return Number(avgRating).toFixed(1);
+        }
+
+        // 🔧 CORREÇÃO: Função para determinar a classe CSS da nota
+        function getRatingClass(avgRating) {
+            if (avgRating === null || avgRating === undefined || isNaN(avgRating)) {
+                return '';
+            }
+            const rating = Number(avgRating);
+            if (rating >= 4) return 'rating-good';
+            if (rating >= 3) return 'rating-average';
+            return 'rating-poor';
+        }
+
+        // Carregar dados
+        async function loadData() {
+            try {
+                const [moviesResponse, usersResponse] = await Promise.all([
+                    fetch('/api/movies').then(r => r.json()),
+                    fetch('/api/users').then(r => r.json())
+                ]);
+
+                // 🔧 CORREÇÃO: Garantir que movies é um array
+                const movies = Array.isArray(moviesResponse) ? moviesResponse : [];
+                const users = Array.isArray(usersResponse) ? usersResponse : [];
+
+                console.log('📊 Dados carregados:', { movies: movies.length, users: users.length });
+
+                // Preencher tabela de filmes - CORREÇÃO APPLICADA
+                const tbody = document.querySelector('#moviesTable tbody');
+                tbody.innerHTML = movies.map(movie => `
+                    <tr>
+                        <td>${movie.title || 'N/A'}</td>
+                        <td>${movie.genre || 'N/A'}</td>
+                        <td>${movie.release_year || 'N/A'}</td>
+                        <td>${movie.director || 'N/A'}</td>
+                        <td class="${getRatingClass(movie.avg_rating)}">
+                            ${formatRating(movie.avg_rating)}
+                        </td>
+                        <td>${movie.rating_count || 0}</td>
+                    </tr>
+                `).join('');
+
+                // Preencher selects - COM VALIDAÇÃO
+                const movieSelect = document.querySelector('#ratingForm select[name="movie_id"]');
+                const userSelect = document.querySelector('#ratingForm select[name="user_id"]');
+                
+                if (movieSelect) {
+                    movieSelect.innerHTML = '<option value="">Selecione um filme</option>' +
+                        movies.map(m => `<option value="${m.id}">${m.title}</option>`).join('');
+                }
+                
+                if (userSelect) {
+                    userSelect.innerHTML = '<option value="">Selecione um usuário</option>' +
+                        users.map(u => `<option value="${u.id}">${u.name} (${u.country})</option>`).join('');
+                }
+
+            } catch (error) {
+                console.error('❌ Erro ao carregar dados:', error);
+                // Mostrar mensagem de erro para o usuário
+                const tbody = document.querySelector('#moviesTable tbody');
+                if (tbody) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="color: red; text-align: center;">Erro ao carregar dados. Tente recarregar a página.</td></tr>';
+                }
+            }
+        }
+
+        // 🔧 CORREÇÃO: Melhor tratamento de erros nos formulários
+        async function handleFormSubmit(e, url, successMessage) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                alert(successMessage || 'Operação realizada com sucesso!');
+                e.target.reset();
+                loadData(); // Recarregar dados
+                
+            } catch (error) {
+                console.error('❌ Erro no formulário:', error);
+                alert('Erro ao processar a solicitação. Tente novamente.');
+            }
+        }
+
+        // Formulário de filme
+        document.getElementById('movieForm').addEventListener('submit', (e) => {
+            handleFormSubmit(e, '/api/movies', 'Filme cadastrado com sucesso!');
+        });
+
+        // Formulário de avaliação
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            data.rating = parseInt(data.rating);
+            data.movie_id = parseInt(data.movie_id);
+            data.user_id = parseInt(data.user_id);
+            
+            handleFormSubmit(e, '/api/ratings', 'Avaliação registrada com sucesso!');
+        });
+
+        // 🔧 CORREÇÃO: Recarregar dados quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Página carregada, iniciando MovieFlix Analytics...');
+            loadData();
+            
+            // Recarregar dados a cada 30 segundos (opcional)
+            // setInterval(loadData, 30000);
+        });
+
+        // 🔧 CORREÇÃO: Adicionar botão de recarregar manual
+        const reloadButton = document.createElement('button');
+        reloadButton.textContent = '🔄 Recarregar Dados';
+        reloadButton.style.margin = '10px';
+        reloadButton.style.padding = '10px';
+        reloadButton.addEventListener('click', loadData);
+        
+        // Inserir botão antes da tabela
+        const moviesSection = document.querySelector('.section h2');
+        if (moviesSection) {
+            moviesSection.parentNode.insertBefore(reloadButton, moviesSection.nextSibling);
+        }
+
+    </script>
+</body>
+</html>
