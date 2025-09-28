@@ -10,17 +10,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 // 🔧 CORREÇÃO: Configuração do MySQL usando nome do serviço
+
 const dbConfig = {
-    host: process.env.DB_HOST || 'mysql',  // ✅ Usar 'mysql' em vez de IP
-    user: process.env.DB_USER || 'movieflix_user',
-    password: process.env.DB_PASSWORD || 'movieflix123',
-    database: process.env.DB_NAME || 'movieflix',
-    port: process.env.DB_PORT || 3306,
-    // 🔧 Adicionar configurações de reconexão
-    reconnect: true,
-    connectTimeout: 60000,
-    acquireTimeout: 60000,
-    timeout: 60000,
+    host: process.env.DB_HOST ,
+    user: process.env.DB_USER ,
+    password: process.env.DB_PASSWORD , 
+    database: process.env.DB_NAME ,
+    port: process.env.DB_PORT 
 };
 
 // Conexão com o banco - VERSÃO CORRIGIDA
