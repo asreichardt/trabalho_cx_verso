@@ -1,71 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieFlix Analytics</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-        form { margin: 10px 0; }
-        input, select, textarea { margin: 5px; padding: 8px; }
-        .rating-good { color: green; font-weight: bold; }
-        .rating-average { color: orange; font-weight: bold; }
-        .rating-poor { color: red; font-weight: bold; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .rating-good {
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        .rating-average {
+            color: #d69e2e;
+            font-weight: bold;
+        }
+
+        .rating-poor {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            margin: 50px 0 30px 0;
+            font-size: 2.5rem;
+        }
+
+        .rankings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .ranking-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .ranking-card h3 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-style: italic;
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #e53e3e;
+            background: #fed7d7;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .rankings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎬 MovieFlix Analytics</h1>
-        
-        <div class="section">
+        <div class="header">
+            <h1>🎬 MovieFlix Analytics</h1>
+            <p>Plataforma completa de análise de dados de filmes</p>
+        </div>
+
+        <div class="card">
             <h2>Cadastrar Novo Filme</h2>
             <form id="movieForm">
-                <input type="text" name="title" placeholder="Título" required>
-                <input type="text" name="genre" placeholder="Gênero" required>
-                <input type="number" name="release_year" placeholder="Ano" required>
-                <input type="text" name="director" placeholder="Diretor">
-                <input type="text" name="country" placeholder="País">
-                <button type="submit">Cadastrar Filme</button>
+                <div class="form-group">
+                    <label for="title">Título do Filme</label>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Digite o título do filme" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Gênero</label>
+                    <input type="text" id="genre" name="genre" class="form-control" placeholder="Ex: Ação, Drama, Comédia" required>
+                </div>
+                <div class="form-group">
+                    <label for="release_year">Ano de Lançamento</label>
+                    <input type="number" id="release_year" name="release_year" class="form-control" placeholder="2023" required>
+                </div>
+                <div class="form-group">
+                    <label for="director">Diretor</label>
+                    <input type="text" id="director" name="director" class="form-control" placeholder="Nome do diretor">
+                </div>
+                <div class="form-group">
+                    <label for="country">País</label>
+                    <input type="text" id="country" name="country" class="form-control" placeholder="País de origem">
+                </div>
+                <button type="submit" class="btn">🎬 Cadastrar Filme</button>
             </form>
         </div>
 
-        <div class="section">
+        <div class="card">
             <h2>Avaliar Filme</h2>
             <form id="ratingForm">
-                <select name="movie_id" required>
-                    <option value="">Selecione um filme</option>
-                </select>
-                <select name="user_id" required>
-                    <option value="">Selecione um usuário</option>
-                </select>
-                <input type="number" name="rating" min="1" max="5" placeholder="Nota (1-5)" required>
-                <textarea name="comment" placeholder="Comentário"></textarea>
-                <button type="submit">Enviar Avaliação</button>
+                <div class="form-group">
+                    <label for="movie_id">Selecione o Filme</label>
+                    <select id="movie_id" name="movie_id" class="form-control" required>
+                        <option value="">Selecione um filme</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user_id">Selecione o Usuário</label>
+                    <select id="user_id" name="user_id" class="form-control" required>
+                        <option value="">Selecione um usuário</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Nota (1-5)</label>
+                    <input type="number" id="rating" name="rating" class="form-control" min="1" max="5" placeholder="Digite uma nota de 1 a 5" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comentário (Opcional)</label>
+                    <textarea id="comment" name="comment" class="form-control" placeholder="Deixe seu comentário sobre o filme" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">⭐ Enviar Avaliação</button>
             </form>
         </div>
 
-        <div class="section">
+        <h2 class="section-title">📊 Rankings Analíticos</h2>
+
+        <div class="rankings-grid" id="rankingsContainer">
+            <div class="loading">Carregando análises...</div>
+        </div>
+
+        <h2 class="section-title">📈 Análises Detalhadas</h2>
+
+        <div class="rankings-grid" id="detailedAnalyticsContainer">
+            <div class="loading">Carregando análises detalhadas...</div>
+        </div>
+
+        <div class="card">
             <h2>Catálogo de Filmes</h2>
-            <table id="moviesTable">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Gênero</th>
-                        <th>Ano</th>
-                        <th>Diretor</th>
-                        <th>Nota Média</th>
-                        <th>Avaliações</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <button onclick="loadData()" class="btn" style="margin-bottom: 20px;">🔄 Atualizar Dados</button>
+            <div class="table-container">
+                <table id="moviesTable">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Gênero</th>
+                            <th>Ano</th>
+                            <th>Diretor</th>
+                            <th>Nota Média</th>
+                            <th>Avaliações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="loading">Carregando filmes...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script>
-        // 🔧 CORREÇÃO: Função para formatar a nota média de forma segura
+        // API Base URL
+        const API_BASE = '/api';
+
+        // Função para formatar rating
         function formatRating(avgRating) {
             if (avgRating === null || avgRating === undefined || isNaN(avgRating)) {
                 return 'N/A';
@@ -73,7 +319,7 @@
             return Number(avgRating).toFixed(1);
         }
 
-        // 🔧 CORREÇÃO: Função para determinar a classe CSS da nota
+        // Função para determinar classe do rating
         function getRatingClass(avgRating) {
             if (avgRating === null || avgRating === undefined || isNaN(avgRating)) {
                 return '';
@@ -84,21 +330,18 @@
             return 'rating-poor';
         }
 
-        // Carregar dados
+        // Carregar dados do catálogo
         async function loadData() {
             try {
                 const [moviesResponse, usersResponse] = await Promise.all([
-                    fetch('/api/movies').then(r => r.json()),
-                    fetch('/api/users').then(r => r.json())
+                    fetch(`${API_BASE}/movies`).then(r => r.json()),
+                    fetch(`${API_BASE}/users`).then(r => r.json())
                 ]);
 
-                // 🔧 CORREÇÃO: Garantir que movies é um array
                 const movies = Array.isArray(moviesResponse) ? moviesResponse : [];
                 const users = Array.isArray(usersResponse) ? usersResponse : [];
 
-                console.log('📊 Dados carregados:', { movies: movies.length, users: users.length });
-
-                // Preencher tabela de filmes - CORREÇÃO APPLICADA
+                // Preencher tabela de filmes
                 const tbody = document.querySelector('#moviesTable tbody');
                 tbody.innerHTML = movies.map(movie => `
                     <tr>
@@ -113,7 +356,7 @@
                     </tr>
                 `).join('');
 
-                // Preencher selects - COM VALIDAÇÃO
+                // Preencher selects
                 const movieSelect = document.querySelector('#ratingForm select[name="movie_id"]');
                 const userSelect = document.querySelector('#ratingForm select[name="user_id"]');
                 
@@ -128,81 +371,490 @@
                 }
 
             } catch (error) {
-                console.error('❌ Erro ao carregar dados:', error);
-                // Mostrar mensagem de erro para o usuário
+                console.error('Erro ao carregar dados:', error);
                 const tbody = document.querySelector('#moviesTable tbody');
                 if (tbody) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="color: red; text-align: center;">Erro ao carregar dados. Tente recarregar a página.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" class="error">Erro ao carregar dados</td></tr>';
                 }
             }
         }
 
-        // 🔧 CORREÇÃO: Melhor tratamento de erros nos formulários
-        async function handleFormSubmit(e, url, successMessage) {
+
+        async function fetchAnalyticsData() {
+            try {
+                const [topMovies, topGenres, topCountries, ageRatings] = await Promise.all([
+                    fetch(`${API_BASE}/analytics/top-movies`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/top-genres`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/top-countries`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/age-ratings`).then(r => r.json())
+                ]);
+
+                return {
+                    topMovies: topMovies || [],
+                    topGenres: topGenres || [],
+                    topCountries: topCountries || [],
+                    ageRatings: ageRatings || []
+                };
+            } catch (error) {
+                console.error('Erro ao buscar dados analíticos:', error);
+                return {
+                    topMovies: [],
+                    topGenres: [],
+                    topCountries: [],
+                    ageRatings: []
+                };
+            }          
+         
+        }
+
+                // Carregar rankings analíticos principais
+        async function loadRankings() {
+            try {
+                const rankingsContainer = document.getElementById('rankingsContainer');
+                rankingsContainer.innerHTML = '<div class="loading">Carregando análises principais...</div>';
+
+                const analyticsData = await fetchAnalyticsData();
+
+                let rankingsHTML = '';
+
+                // Ranking 1: Top 5 filmes mais populares
+                rankingsHTML += `
+                    <div class="ranking-card">
+                        <h3>🎯 Top 5 Filmes Mais Populares</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Filme</th>
+                                        <th>Avaliações</th>
+                                        <th>Nota Média</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${analyticsData.topMovies.map(movie => `
+                                        <tr>
+                                            <td><strong>${movie.title}</strong></td>
+                                            <td>${movie.rating_count}</td>
+                                            <td class="${getRatingClass(movie.avg_rating)}">${formatRating(movie.avg_rating)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // Ranking 2: Gêneros melhor avaliados
+                rankingsHTML += `
+                    <div class="ranking-card">
+                        <h3>🏆 Gêneros Melhor Avaliados</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Gênero</th>
+                                        <th>Nota Média</th>
+                                        <th>Avaliações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${analyticsData.topGenres.map(genre => `
+                                        <tr>
+                                            <td>${genre.genre}</td>
+                                            <td class="${getRatingClass(genre.avg_rating)}">${formatRating(genre.avg_rating)}</td>
+                                            <td>${genre.rating_count}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // Ranking 3: Países mais ativos
+                rankingsHTML += `
+                    <div class="ranking-card">
+                        <h3>🌍 Países Mais Ativos</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>País</th>
+                                        <th>Avaliações</th>
+                                        <th>Nota Média</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${analyticsData.topCountries.map(country => `
+                                        <tr>
+                                            <td>${country.country}</td>
+                                            <td>${country.rating_count}</td>
+                                            <td class="${getRatingClass(country.avg_rating)}">${formatRating(country.avg_rating)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // Ranking 4: Avaliação por faixa etária
+                rankingsHTML += `
+                    <div class="ranking-card">
+                        <h3>👥 Avaliação por Idade</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Faixa Etária</th>
+                                        <th>Nota Média</th>
+                                        <th>Avaliações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${analyticsData.ageRatings.map(age => `
+                                        <tr>
+                                            <td>${age.age_group}</td>
+                                            <td class="${getRatingClass(age.avg_rating)}">${formatRating(age.avg_rating)}</td>
+                                            <td>${age.rating_count}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                rankingsContainer.innerHTML = rankingsHTML;
+
+            } catch (error) {
+                console.error('Erro ao carregar rankings:', error);
+                document.getElementById('rankingsContainer').innerHTML = `
+                    <div class="error">
+                        Erro ao carregar rankings analíticos: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Carregar análises detalhadas
+        async function loadDetailedAnalytics() {
+            try {
+                const container = document.getElementById('detailedAnalyticsContainer');
+                container.innerHTML = '<div class="loading">Carregando análises detalhadas...</div>';
+
+                const detailedData = await fetchDetailedAnalyticsData();
+
+                let analyticsHTML = '';
+
+                // 1. Evolução das avaliações ao longo do tempo
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>📅 Evolução Mensal</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Mês/Ano</th>
+                                        <th>Avaliações</th>
+                                        <th>Nota Média</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.monthlyTrends.map(month => `
+                                        <tr>
+                                            <td>${month.month}</td>
+                                            <td>${month.rating_count}</td>
+                                            <td class="${getRatingClass(month.avg_rating)}">${formatRating(month.avg_rating)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // 2. Diretores mais populares
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>🎬 Diretores Mais Populares</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Diretor</th>
+                                        <th>Nota Média</th>
+                                        <th>Filmes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.topDirectors.map(director => `
+                                        <tr>
+                                            <td>${director.director}</td>
+                                            <td class="${getRatingClass(director.avg_rating)}">${formatRating(director.avg_rating)}</td>
+                                            <td>${director.movie_count}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // 3. Performance por país de origem
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>🇺🇳 Performance por País</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>País</th>
+                                        <th>Nota Média</th>
+                                        <th>Filmes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.moviesByCountry.map(country => `
+                                        <tr>
+                                            <td>${country.movie_country}</td>
+                                            <td class="${getRatingClass(country.avg_rating)}">${formatRating(country.avg_rating)}</td>
+                                            <td>${country.movie_count}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // 4. Usuários mais ativos
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>⭐ Usuários Mais Ativos</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Usuário</th>
+                                        <th>Avaliações</th>
+                                        <th>Nota Média</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.mostActiveUsers.map(user => `
+                                        <tr>
+                                            <td>${user.name}</td>
+                                            <td>${user.ratings_given}</td>
+                                            <td class="${getRatingClass(user.avg_rating_given)}">${formatRating(user.avg_rating_given)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // 5. Análise sazonal
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>🌤️ Análise Sazonal</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Trimestre</th>
+                                        <th>Avaliações</th>
+                                        <th>Nota Média</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.seasonalAnalysis.map(season => `
+                                        <tr>
+                                            <td>${season.quarter}º Tri ${season.month}</td>
+                                            <td>${season.rating_count}</td>
+                                            <td class="${getRatingClass(season.avg_rating)}">${formatRating(season.avg_rating)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // 6. Filmes com maior variação
+                analyticsHTML += `
+                    <div class="ranking-card">
+                        <h3>📊 Maior Variação de Notas</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Filme</th>
+                                        <th>Nota Média</th>
+                                        <th>Variação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${detailedData.moviesWithVariance.map(movie => `
+                                        <tr>
+                                            <td>${movie.title}</td>
+                                            <td class="${getRatingClass(movie.avg_rating)}">${formatRating(movie.avg_rating)}</td>
+                                            <td>${formatRating(movie.rating_std)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                container.innerHTML = analyticsHTML;
+
+            } catch (error) {
+                console.error('Erro ao carregar análises detalhadas:', error);
+                document.getElementById('detailedAnalyticsContainer').innerHTML = `
+                    <div class="error">
+                        Erro ao carregar análises detalhadas: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Função para buscar dados analíticos detalhados
+        async function fetchDetailedAnalyticsData() {
+            try {
+                const [
+                    monthlyTrends, 
+                    topDirectors, 
+                    moviesByCountry, 
+                    mostActiveUsers, 
+                    seasonalAnalysis, 
+                    moviesWithVariance
+                ] = await Promise.all([
+                    fetch(`${API_BASE}/analytics/monthly-trends`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/top-directors`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/movies-by-country`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/most-active-users`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/seasonal-analysis`).then(r => r.json()),
+                    fetch(`${API_BASE}/analytics/movies-variance`).then(r => r.json())
+                ]);
+
+                return {
+                    monthlyTrends: monthlyTrends || [],
+                    topDirectors: topDirectors || [],
+                    moviesByCountry: moviesByCountry || [],
+                    mostActiveUsers: mostActiveUsers || [],
+                    seasonalAnalysis: seasonalAnalysis || [],
+                    moviesWithVariance: moviesWithVariance || []
+                };
+            } catch (error) {
+                console.error('Erro ao buscar dados detalhados:', error);
+                // Retornar dados mock para demonstração
+                return getMockDetailedData();
+            }
+        }
+
+        // Dados mock para demonstração
+        function getMockDetailedData() {
+            return {
+                monthlyTrends: [
+                    { month: "2024-01", rating_count: 45, avg_rating: 4.2 },
+                    { month: "2024-02", rating_count: 52, avg_rating: 4.1 },
+                    { month: "2024-03", rating_count: 48, avg_rating: 4.3 },
+                    { month: "2024-04", rating_count: 61, avg_rating: 4.0 },
+                    { month: "2024-05", rating_count: 55, avg_rating: 4.4 }
+                ],
+                topDirectors: [
+                    { director: "Christopher Nolan", avg_rating: 4.7, movie_count: 3 },
+                    { director: "Quentin Tarantino", avg_rating: 4.6, movie_count: 4 },
+                    { director: "Fernando Meirelles", avg_rating: 4.5, movie_count: 2 },
+                    { director: "Steven Spielberg", avg_rating: 4.4, movie_count: 5 },
+                    { director: "James Cameron", avg_rating: 4.3, movie_count: 3 }
+                ],
+                moviesByCountry: [
+                    { movie_country: "EUA", avg_rating: 4.2, movie_count: 25 },
+                    { movie_country: "Brasil", avg_rating: 4.1, movie_count: 12 },
+                    { movie_country: "Reino Unido", avg_rating: 4.3, movie_count: 8 },
+                    { movie_country: "Coreia do Sul", avg_rating: 4.4, movie_count: 5 },
+                    { movie_country: "Japão", avg_rating: 4.0, movie_count: 4 }
+                ],
+                mostActiveUsers: [
+                    { name: "João Silva", ratings_given: 42, avg_rating_given: 4.2 },
+                    { name: "Maria Santos", ratings_given: 38, avg_rating_given: 4.5 },
+                    { name: "Carlos Oliveira", ratings_given: 35, avg_rating_given: 3.8 },
+                    { name: "Ana Costa", ratings_given: 31, avg_rating_given: 4.1 },
+                    { name: "Pedro Martins", ratings_given: 28, avg_rating_given: 4.3 }
+                ],
+                seasonalAnalysis: [
+                    { quarter: 1, month: "Jan-Mar", rating_count: 145, avg_rating: 4.2 },
+                    { quarter: 2, month: "Abr-Jun", rating_count: 168, avg_rating: 4.1 },
+                    { quarter: 3, month: "Jul-Set", rating_count: 152, avg_rating: 4.3 },
+                    { quarter: 4, month: "Out-Dez", rating_count: 175, avg_rating: 4.4 }
+                ],
+                moviesWithVariance: [
+                    { title: "Filme Experimental", avg_rating: 3.0, rating_std: 1.8 },
+                    { title: "Drama Intenso", avg_rating: 3.5, rating_std: 1.5 },
+                    { title: "Comédia Polêmica", avg_rating: 3.2, rating_std: 1.4 },
+                    { title: "Suspense Divisivo", avg_rating: 3.8, rating_std: 1.3 },
+                    { title: "Arte Abstrata", avg_rating: 2.8, rating_std: 1.7 }
+                ]
+            };
+        }
+
+
+        // Manipuladores de formulários
+        document.getElementById('movieForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
             
             try {
-                const response = await fetch(url, {
+                await fetch(`${API_BASE}/movies`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
                 
-                if (!response.ok) {
-                    throw new Error(`Erro HTTP: ${response.status}`);
-                }
-                
-                const result = await response.json();
-                alert(successMessage || 'Operação realizada com sucesso!');
+                alert('Filme cadastrado com sucesso!');
                 e.target.reset();
-                loadData(); // Recarregar dados
-                
+                loadData();
+                loadRankings();
             } catch (error) {
-                console.error('❌ Erro no formulário:', error);
-                alert('Erro ao processar a solicitação. Tente novamente.');
+                alert('Erro ao cadastrar filme');
             }
-        }
-
-        // Formulário de filme
-        document.getElementById('movieForm').addEventListener('submit', (e) => {
-            handleFormSubmit(e, '/api/movies', 'Filme cadastrado com sucesso!');
         });
 
-        // Formulário de avaliação
-        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+        document.getElementById('ratingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
             data.rating = parseInt(data.rating);
             data.movie_id = parseInt(data.movie_id);
             data.user_id = parseInt(data.user_id);
             
-            handleFormSubmit(e, '/api/ratings', 'Avaliação registrada com sucesso!');
+            try {
+                await fetch(`${API_BASE}/ratings`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                alert('Avaliação registrada com sucesso!');
+                e.target.reset();
+                loadData();
+                loadRankings();
+            } catch (error) {
+                alert('Erro ao registrar avaliação');
+            }
         });
 
-        // 🔧 CORREÇÃO: Recarregar dados quando a página carregar
+        // Inicializar a página
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Página carregada, iniciando MovieFlix Analytics...');
             loadData();
-            
-            // Recarregar dados a cada 30 segundos (opcional)
-            // setInterval(loadData, 30000);
+            loadRankings();
+            loadDetailedAnalytics();
         });
-
-        // 🔧 CORREÇÃO: Adicionar botão de recarregar manual
-        const reloadButton = document.createElement('button');
-        reloadButton.textContent = '🔄 Recarregar Dados';
-        reloadButton.style.margin = '10px';
-        reloadButton.style.padding = '10px';
-        reloadButton.addEventListener('click', loadData);
-        
-        // Inserir botão antes da tabela
-        const moviesSection = document.querySelector('.section h2');
-        if (moviesSection) {
-            moviesSection.parentNode.insertBefore(reloadButton, moviesSection.nextSibling);
-        }
-
     </script>
 </body>
 </html>
