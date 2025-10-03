@@ -178,3 +178,216 @@ app.listen(port, () => {
     console.log(`📊 Tentando conectar no MySQL: ${dbConfig.host}:${dbConfig.port}`);
     connectDB();
 });
+
+
+// Rotas para consultas analíticas
+app.get('/api/analytics/top-movies', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT m.title, COUNT(r.rating) as rating_count, AVG(r.rating) as avg_rating
+            FROM movies m
+            JOIN ratings r ON m.id = r.movie_id
+            GROUP BY m.id, m.title
+            HAVING COUNT(r.rating) >= 5
+            ORDER BY rating_count DESC, avg_rating DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/api/analytics/top-genres', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                SUBSTRING_INDEX(SUBSTRING_INDEX(m.genre, ',', 1), ',', -1) as genre,
+                COUNT(r.rating) as rating_count,
+                AVG(r.rating) as avg_rating
+            FROM movies m
+            JOIN ratings r ON m.id = r.movie_id
+            GROUP BY genre
+            HAVING COUNT(r.rating) >= 10
+            ORDER BY avg_rating DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/api/analytics/top-countries', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT u.country, COUNT(r.rating) as rating_count, AVG(r.rating) as avg_rating
+            FROM ratings r
+            JOIN users u ON r.user_id = u.id
+            GROUP BY u.country
+            HAVING COUNT(r.rating) >= 5
+            ORDER BY rating_count DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/api/analytics/age-ratings', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                CASE 
+                    WHEN u.age < 25 THEN '18-24'
+                    WHEN u.age BETWEEN 25 AND 34 THEN '25-34'
+                    WHEN u.age BETWEEN 35 AND 50 THEN '35-50'
+                    ELSE '50+'
+                END as age_group,
+                AVG(r.rating) as avg_rating,
+                COUNT(r.rating) as rating_count
+            FROM ratings r
+            JOIN users u ON r.user_id = u.id
+            WHERE u.age IS NOT NULL
+            GROUP BY age_group
+            ORDER BY age_group
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 4. Evolução das avaliações ao longo do tempo
+app.get('/api/analytics/monthly-trends', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                DATE_FORMAT(r.created_at, '%Y-%m') as month,
+                COUNT(r.rating) as rating_count,
+                AVG(r.rating) as avg_rating
+            FROM ratings r
+            GROUP BY DATE_FORMAT(r.created_at, '%Y-%m')
+            ORDER BY month DESC
+            LIMIT 6
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 6. Diretores mais populares
+app.get('/api/analytics/top-directors', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                m.director,
+                COUNT(r.rating) as rating_count,
+                AVG(r.rating) as avg_rating,
+                COUNT(DISTINCT m.id) as movie_count
+            FROM movies m
+            JOIN ratings r ON m.id = r.movie_id
+            WHERE m.director IS NOT NULL AND m.director != ''
+            GROUP BY m.director
+            HAVING COUNT(r.rating) >= 3
+            ORDER BY avg_rating DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 7. Performance de filmes por país de origem
+app.get('/api/analytics/movies-by-country', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                m.country as movie_country,
+                COUNT(r.rating) as rating_count,
+                AVG(r.rating) as avg_rating,
+                COUNT(DISTINCT m.id) as movie_count
+            FROM movies m
+            LEFT JOIN ratings r ON m.id = r.movie_id
+            WHERE m.country IS NOT NULL AND m.country != ''
+            GROUP BY m.country
+            HAVING COUNT(r.rating) >= 1
+            ORDER BY rating_count DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 8. Usuários mais ativos
+app.get('/api/analytics/most-active-users', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                u.name,
+                u.country,
+                COUNT(r.rating) as ratings_given,
+                AVG(r.rating) as avg_rating_given
+            FROM users u
+            JOIN ratings r ON u.id = r.user_id
+            GROUP BY u.id, u.name, u.country
+            ORDER BY ratings_given DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 9. Análise sazonal
+app.get('/api/analytics/seasonal-analysis', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                QUARTER(r.created_at) as quarter,
+                CASE 
+                    WHEN QUARTER(r.created_at) = 1 THEN 'Jan-Mar'
+                    WHEN QUARTER(r.created_at) = 2 THEN 'Abr-Jun'
+                    WHEN QUARTER(r.created_at) = 3 THEN 'Jul-Set'
+                    WHEN QUARTER(r.created_at) = 4 THEN 'Out-Dez'
+                END as month,
+                COUNT(r.rating) as rating_count,
+                AVG(r.rating) as avg_rating
+            FROM ratings r
+            GROUP BY QUARTER(r.created_at), month
+            ORDER BY quarter
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 10. Filmes com maior variação de avaliações
+app.get('/api/analytics/movies-variance', async (req, res) => {
+    try {
+        const [rows] = await db.execute(`
+            SELECT 
+                m.title,
+                m.genre,
+                AVG(r.rating) as avg_rating,
+                STD(r.rating) as rating_std,
+                COUNT(r.rating) as rating_count
+            FROM movies m
+            JOIN ratings r ON m.id = r.movie_id
+            GROUP BY m.id, m.title, m.genre
+            HAVING COUNT(r.rating) >= 5
+            ORDER BY rating_std DESC
+            LIMIT 5
+        `);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
