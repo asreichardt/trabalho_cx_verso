@@ -1,0 +1,201 @@
+id,title,genre,release_year,director,country,duration,created_at
+1,Cidade de Deus,"Crime, Drama",2002,Fernando Meirelles,Brasil,151,2025-07-31 17:23:08.275125
+2,Tropa de Elite,"Action, Crime, Drama",2007,José Padilha,Brasil,140,2025-02-14 17:23:08.275125
+3,Central do Brasil,Drama,1998,Walter Salles,Brasil,126,2025-03-09 17:23:08.275125
+4,O Auto da Compadecida,"Adventure, Comedy",2000,Guel Arraes,Brasil,138,2025-01-22 17:23:08.275125
+5,Lisbela e o Prisioneiro,"Comedy, Romance",2003,Guel Arraes,Brasil,99,2025-05-02 17:23:08.275125
+6,"O Que É Isso, Companheiro?","Drama, History",1997,Walter Salles,Brasil,160,2024-12-02 17:23:08.275125
+7,Carandiru,"Crime, Drama",2003,Quentin Tarantino,Brasil,160,2025-09-10 17:23:08.275125
+8,O Pagador de Promessas,Drama,1962,Walter Salles,Brasil,153,2025-09-16 17:23:08.275125
+9,Bye Bye Brasil,"Adventure, Comedy, Drama",2050,Steven Spielberg,Brasil,150,2025-04-26 17:23:08.275125
+10,Dona Flor e Seus Dois Maridos,"Comedy, Fantasy",1976,Edgar Wright,Brasil,90,2025-09-01 17:23:08.275125
+11,The Godfather,"Crime, Drama",1972,Brian De Palma,Canadá,145,2025-08-31 17:23:08.275125
+12,Pulp Fiction,"Crime, Drama",1994,Francis Ford Coppola,EUA,152,2025-06-03 17:23:08.275125
+13,The Shawshank Redemption,Drama,1994,Martin Scorsese,Coreia do Sul,100,2024-10-12 17:23:08.275125
+14,Forrest Gump,"Drama, Romance",1994,Fernando Meirelles,Reino Unido,172,2024-11-22 17:23:08.275125
+15,The Matrix,"Action, Sci-Fi",1999,James Cameron,Reino Unido,116,2025-04-14 17:23:08.275125
+16,Inception,"Action, Adventure, Sci-Fi",2010,Michael Bay,Canadá,95,2025-09-28 17:23:08.275125
+17,The Dark Knight,"Action, Crime, Drama",2008,Christopher Nolan,Reino Unido,149,2025-05-17 17:23:08.275125
+18,Fight Club,Drama,1999,Walter Salles,Reino Unido,138,2025-04-25 17:23:08.275125
+19,Goodfellas,"Biography, Crime, Drama",1990,Unknown Director,Canadá,-120,2025-09-14 17:23:08.275125
+20,The Silence of the Lambs,"Crime, Drama, Thriller",1991,Francis Ford Coppola,Japão,121,2025-03-20 17:23:08.275125
+21,Avatar,"Action, Adventure, Fantasy",2009,James Cameron,Reino Unido,115,2025-02-19 17:23:08.275125
+22,Titanic,"Drama, Romance",1997,Fernando Meirelles,Reino Unido,174,2025-02-18 17:23:08.275125
+23,Star Wars: A New Hope,"Action, Adventure, Fantasy",1977,John Woo,Coreia do Sul,144,2025-06-06 17:23:08.275125
+24,The Lord of the Rings: The Fellowship of the Ring,"Action, Adventure, Drama",2001,John Woo,EUA,101,2024-12-18 17:23:08.275125
+25,Jurassic Park,"Action, Adventure, Sci-Fi",1993,John Woo,Canadá,134,2025-05-22 17:23:08.275125
+26,The Avengers,"Action, Adventure, Sci-Fi",2012,James Cameron,Coreia do Sul,135,2024-10-18 17:23:08.275125
+27,Black Panther,"Action, Adventure, Sci-Fi",2018,James Cameron,Reino Unido,135,2024-11-10 17:23:08.275125
+28,Parasite,"Comedy, Drama, Thriller",2019,Judd Apatow,EUA,93,2025-08-10 17:23:08.275125
+29,La La Land,,2016,Walter Salles,EUA,179,2025-08-18 17:23:08.275125
+30,Get Out,"Horror, Mystery, Thriller",2017,John Carpenter,EUA,91,2025-03-31 17:23:08.275125
+31,The Midnight Paradox,Sci-Fi,1985,Hayao Miyazaki,Japão,140,2025-02-09 17:23:08.275125
+32,Echoes of Sun,Drama,1993,Christopher Nolan,Reino Unido,119,2025-08-04 17:23:08.275125
+33,The Silent Protocol,Action,2012,Danny Boyle,Reino Unido,150,2025-03-22 17:23:08.275632
+34,The Silent Adventure,Comedy,1971,Ridley Scott,Reino Unido,91,2025-05-21 17:23:08.275640
+35,Shadow Run,Action,1983,Martin Scorsese,EUA,130,2024-11-08 17:23:08.275640
+36,Shadows of Sun,Drama,1968,Kim Jee-woon,Coreia do Sul,110,2024-11-13 17:23:08.275640
+37,The Lost House,Horror,2006,Takashi Miike,Japão,93,2025-08-20 17:23:08.275640
+38,The Final Protocol,Action,1993,Martin Scorsese,EUA,121,2025-02-05 17:23:08.275640
+39,,Sci-Fi,1977,Martin Scorsese,EUA,160,2024-10-01 17:23:08.275640
+40,Shadows of Sun,Drama,2017,José Padilha,Brasil,102,2025-06-11 17:23:08.275640
+41,Street Echo,Crime,1974,Martin Scorsese,EUA,114,2025-04-29 17:23:08.275640
+42,Sun Rising,Action,2011,Quentin Tarantino,EUA,108,2025-04-01 17:23:08.275640
+43,The Echo House,Horror,2019,Christopher Nolan,EUA,170,2025-09-27 17:23:08.275640
+44,Shadows of Lost,Drama,1990,Quentin Tarantino,EUA,151,2024-12-03 17:23:08.275640
+45,The Last Lost,Drama,2020,Kim Jee-woon,Coreia do Sul,134,2025-06-17 17:23:08.275640
+46,Midnight Legacy,Sci-Fi,1965,Hayao Miyazaki,Japão,159,2025-02-13 17:23:08.275640
+47,Beyond Midnight,Sci-Fi,1988,Martin Scorsese,EUA,133,2024-10-28 17:23:08.275640
+48,The Last Lost,Drama,1975,Kim Jee-woon,Coreia do Sul,129,2025-08-29 17:23:08.275640
+49,The Lost Curse,Horror,1996,Christopher Nolan,EUA,90,2025-06-08 17:23:08.275640
+50,Silent Party,Comedy,2018,Martin Scorsese,EUA,152,2025-06-27 17:23:08.275640
+51,The Echo House,Horror,1982,Quentin Tarantino,EUA,123,2025-02-05 17:23:08.275640
+52,The Shadow Syndicate,Crime,2012,Martin Scorsese,EUA,136,2025-03-17 17:23:08.275640
+53,The Dream Connection,Comedy,1998,Martin Scorsese,EUA,89,2025-09-10 17:23:08.275640
+54,Street Silent,Crime,1981,Martin Scorsese,EUA,159,2025-06-16 17:23:08.275640
+55,The Dream Protocol,Action,2021,Danny Boyle,Reino Unido,120,2025-08-18 17:23:08.275640
+56,Shadows of Silent,Drama,2002,Ridley Scott,Reino Unido,114,2024-10-07 17:23:08.275640
+57,The Lost Connection,Crime,1972,Hayao Miyazaki,Japão,100,2025-08-01 17:23:08.275640
+58,The Shadow Effect,Sci-Fi,2015,Danny Boyle,Reino Unido,112,2024-11-04 17:23:08.275640
+59,Silent Legacy,Sci-Fi,1999,Quentin Tarantino,EUA,119,2025-01-23 17:23:08.275640
+60,The Echo Paradox,Sci-Fi,2001,Steven Spielberg,EUA,127,2025-02-08 17:23:08.275640
+61,The Final Connection,Crime,1986,Takashi Miike,Japão,85,2024-10-31 17:23:08.275640
+62,The Sun Directive,Action,1970,Christopher Nolan,Reino Unido,124,2025-01-18 17:23:08.275640
+63,Shadow City,Crime,1982,Walter Salles,Brasil,99,2025-07-17 17:23:08.275640
+64,Dream Run,Action,2015,Fernando Meirelles,Brasil,147,2025-08-23 17:23:08.275640
+65,The Echo Promise,Drama,1997,Martin Scorsese,EUA,99,2024-11-01 17:23:08.275640
+66,Echo City,Crime,2008,Quentin Tarantino,EUA,132,2024-12-16 17:23:08.275640
+67,The Last Silent,Drama,1970,José Padilha,Brasil,110,2024-10-11 17:23:08.275640
+68,Shadows of Final,Drama,1995,Steven Spielberg,EUA,154,2024-10-16 17:23:08.275640
+69,Midnight Party,Comedy,2006,Martin Scorsese,EUA,160,2025-03-28 17:23:08.275640
+70,Street Shadow,Crime,1973,Martin Scorsese,EUA,128,2025-03-04 17:23:08.275640
+71,The Echo Promise,Drama,2021,Martin Scorsese,EUA,93,2024-11-01 17:23:08.275640
+72,The Silent Directive,Action,2000,Walter Salles,Brasil,138,2025-03-25 17:23:08.275640
+73,The Midnight Connection,Comedy,1984,Guel Arraes,Brasil,125,2025-08-06 17:23:08.275640
+74,Final Party,Comedy,1982,Steven Spielberg,EUA,120,2025-07-14 17:23:08.275640
+75,Dream Rising,Action,2005,Martin Scorsese,EUA,109,2025-05-09 17:23:08.275640
+76,Echoes of Lost,Drama,1996,Martin Scorsese,EUA,106,2025-06-13 17:23:08.275640
+77,Echo Run,Action,2023,Steven Spielberg,EUA,134,2024-11-03 17:23:08.275640
+78,The Lost Connection,Crime,2020,Fernando Meirelles,Brasil,94,2025-03-10 17:23:08.275640
+79,The Silent Protocol,Action,1981,Christopher Nolan,EUA,152,2025-04-11 17:23:08.275640
+80,Sun Run,Action,1968,Martin Scorsese,EUA,170,2024-11-08 17:23:08.275640
+81,Silent City,Crime,2008,Guel Arraes,Brasil,102,2024-12-10 17:23:08.275640
+82,Whispers of Sun,Horror,2002,Akira Kurosawa,Japão,175,2025-06-06 17:23:08.275640
+83,Echo Legacy,Sci-Fi,2022,Quentin Tarantino,EUA,107,2024-12-09 17:23:08.275640
+84,The Dream Directive,Action,1987,Guel Arraes,Brasil,147,2025-03-02 17:23:08.275640
+85,The Final Syndicate,Crime,2009,Martin Scorsese,EUA,100,2025-04-24 17:23:08.275640
+86,Echo Rising,Action,1999,Christopher Nolan,EUA,178,2025-09-09 17:23:08.275640
+87,Whispers of Sun,Horror,1969,Steven Spielberg,EUA,148,2025-03-11 17:23:08.275640
+88,The Lost Curse,Horror,1996,Guel Arraes,Brasil,158,2025-04-08 17:23:08.275640
+89,The Midnight Connection,Comedy,2016,Alfred Hitchcock,Reino Unido,105,2024-12-21 17:23:08.275640
+90,The Last Echo,Drama,2005,Martin Scorsese,EUA,89,2025-05-30 17:23:08.275640
+91,Dream Nights,Comedy,1991,Hayao Miyazaki,Japão,172,2025-09-13 17:23:08.275640
+92,The Last Sun,Drama,1965,Park Chan-wook,Coreia do Sul,85,2025-09-25 17:23:08.275640
+93,Lost Legacy,Sci-Fi,2009,Steven Spielberg,EUA,152,2025-06-08 17:23:08.275640
+94,The Silent Adventure,Comedy,1989,Christopher Nolan,Reino Unido,114,2025-06-30 17:23:08.275640
+95,The Silent Paradox,Sci-Fi,1999,Martin Scorsese,EUA,175,2025-09-10 17:23:08.275640
+96,The Shadow Effect,Sci-Fi,1973,Quentin Tarantino,EUA,93,2025-05-27 17:23:08.275640
+97,Dream Party,Comedy,1962,Quentin Tarantino,EUA,171,2024-12-27 17:23:08.275640
+98,The Shadow Promise,Drama,1960,Takashi Miike,Japão,178,2024-11-30 17:23:08.275640
+99,The Echo Connection,Crime,1969,Fernando Meirelles,Brasil,148,2025-02-18 17:23:08.275640
+100,The Midnight Paradox,Sci-Fi,1996,Park Chan-wook,Coreia do Sul,95,2024-10-21 17:23:08.275640
+101,The Silent Connection,Comedy,2020,Ridley Scott,Reino Unido,101,2024-11-14 17:23:08.275640
+102,The Dream Paradox,Sci-Fi,2012,Bong Joon-ho,Coreia do Sul,122,2024-12-01 17:23:08.275640
+103,Midnight Legacy,Sci-Fi,2014,Christopher Nolan,EUA,164,2025-05-21 17:23:08.275640
+104,Echo Nights,Comedy,2021,François Truffaut,França,162,2025-03-10 17:23:08.275640
+105,Echo Nights,Comedy,1975,Bong Joon-ho,Coreia do Sul,94,2025-03-09 17:23:08.275640
+106,The Midnight Syndicate,Crime,2011,Luc Besson,França,116,2025-04-12 17:23:08.275640
+107,Final Rising,Action,2014,Fernando Meirelles,Brasil,107,2025-01-25 17:23:08.275640
+108,Shadows of Final,Drama,1971,Christopher Nolan,Reino Unido,161,2025-06-05 17:23:08.275640
+109,The Echo Protocol,Action,1983,Martin Scorsese,EUA,116,2024-10-07 17:23:08.275640
+110,The Final Connection,Crime,2003,Christopher Nolan,Reino Unido,129,2024-11-25 17:23:08.275640
+111,The Last Shadow,Drama,1960,Martin Scorsese,EUA,172,2025-07-18 17:23:08.275640
+112,Dark Shadow,Horror,2012,Walter Salles,Brasil,87,2025-06-21 17:23:08.275640
+113,The Sun Syndicate,Crime,1983,Martin Scorsese,EUA,110,2025-01-31 17:23:08.275640
+114,Echoes of Shadow,Drama,1981,Martin Scorsese,EUA,170,2024-10-15 17:23:08.275640
+115,Whispers of Lost,Horror,2023,Steven Spielberg,EUA,169,2024-12-29 17:23:08.275640
+116,The Midnight Curse,Horror,1966,Danny Boyle,Reino Unido,144,2025-07-06 17:23:08.275640
+117,The Dream Curse,Horror,2001,Park Chan-wook,Coreia do Sul,157,2025-08-15 17:23:08.275640
+118,Shadows of Shadow,Drama,1994,Christopher Nolan,EUA,105,2025-09-15 17:23:08.275640
+119,The Final Promise,Drama,1998,Quentin Tarantino,EUA,119,2024-11-03 17:23:08.275640
+120,The Last Shadow,Drama,1960,Bong Joon-ho,Coreia do Sul,134,2025-03-07 17:23:08.275640
+121,The Last Silent,Drama,1979,Walter Salles,Brasil,135,2025-08-24 17:23:08.275640
+122,The Echo Protocol,Action,1973,Alfred Hitchcock,Reino Unido,165,2024-11-04 17:23:08.275640
+123,The Lost Directive,Action,1978,Martin Scorsese,EUA,100,2025-03-17 17:23:08.275640
+124,The Echo Connection,Crime,1982,Walter Salles,Brasil,152,2025-03-16 17:23:08.275640
+125,The Shadow Syndicate,Crime,1968,Akira Kurosawa,Japão,103,2025-04-13 17:23:08.275640
+126,The Final Directive,Action,1993,Quentin Tarantino,EUA,116,2024-12-25 17:23:08.275640
+127,The Silent Protocol,Action,1987,Hayao Miyazaki,Japão,134,2025-06-06 17:23:08.275640
+128,Shadows of Shadow,Drama,2020,Ridley Scott,Reino Unido,166,2025-01-23 17:23:08.275640
+129,The Lost Protocol,Action,1995,Alfred Hitchcock,Reino Unido,115,2024-12-27 17:23:08.275640
+130,Shadow Rising,Action,2015,Fernando Meirelles,Brasil,118,2025-09-09 17:23:08.275640
+131,The Silent Protocol,Action,1965,Ridley Scott,Reino Unido,170,2025-03-24 17:23:08.275640
+132,Shadow Nights,Comedy,2001,Walter Salles,Brasil,88,2025-06-19 17:23:08.276638
+133,The Lost Adventure,Comedy,2001,Park Chan-wook,Coreia do Sul,142,2025-03-04 17:23:08.276638
+134,Dark Dream,Horror,2020,Ridley Scott,Reino Unido,87,2025-07-23 17:23:08.276638
+135,The Final Paradox,Sci-Fi,2007,Quentin Tarantino,EUA,97,2025-02-02 17:23:08.276638
+136,The Final Curse,Horror,1965,Christopher Nolan,EUA,114,2025-09-19 17:23:08.276638
+137,The Sun Protocol,Action,1983,Hayao Miyazaki,Japão,129,2025-06-27 17:23:08.276638
+138,Silent City,Crime,2008,Alfred Hitchcock,Reino Unido,85,2025-08-13 17:23:08.276638
+139,The Final Promise,Drama,2004,Ridley Scott,Reino Unido,171,2025-09-29 17:23:08.276638
+140,The Dream Protocol,Action,1973,Quentin Tarantino,EUA,103,2025-07-26 17:23:08.276638
+141,Echoes of Final,Drama,1998,Alfred Hitchcock,Reino Unido,108,2025-08-08 17:23:08.276638
+142,Dream Run,Action,1960,José Padilha,Brasil,99,2025-02-18 17:23:08.276638
+143,The Silent Syndicate,Crime,1983,Steven Spielberg,EUA,164,2024-12-15 17:23:08.276638
+144,Shadows of Dream,Drama,2001,Steven Spielberg,EUA,132,2025-08-24 17:23:08.276638
+145,The Final Promise,Drama,1992,François Truffaut,França,179,2024-12-27 17:23:08.276638
+146,Beyond Dream,Sci-Fi,2003,Quentin Tarantino,EUA,85,2025-04-25 17:23:08.276638
+147,The Lost Syndicate,Crime,2014,Christopher Nolan,EUA,98,2025-02-04 17:23:08.276638
+148,The Lost Syndicate,Crime,1992,Quentin Tarantino,EUA,131,2025-07-22 17:23:08.276638
+149,Echoes of Lost,Drama,2004,Kim Jee-woon,Coreia do Sul,166,2025-08-05 17:23:08.276638
+150,The Sun Adventure,Comedy,1985,Fernando Meirelles,Brasil,91,2025-02-28 17:23:08.276638
+151,Echoes of Shadow,Drama,1962,Danny Boyle,Reino Unido,162,2024-11-04 17:23:08.276638
+152,The Final Protocol,Action,1980,Hayao Miyazaki,Japão,178,2025-02-23 17:23:08.276638
+153,The Last Lost,Drama,2001,Quentin Tarantino,EUA,125,2025-01-22 17:23:08.276638
+154,Echo Run,Action,1977,Luc Besson,França,105,2025-04-12 17:23:08.276638
+155,Shadows of Final,Drama,2017,Christopher Nolan,EUA,170,2025-03-23 17:23:08.276638
+156,The Midnight Connection,Crime,2012,Christopher Nolan,Reino Unido,155,2025-08-07 17:23:08.276638
+157,Silent Run,Action,2018,Steven Spielberg,EUA,169,2025-06-24 17:23:08.276638
+158,The Last Sun,Drama,2004,Kim Jee-woon,Coreia do Sul,136,2025-01-03 17:23:08.276638
+159,Silent Party,Comedy,1978,José Padilha,Brasil,124,2025-05-16 17:23:08.276638
+160,The Midnight Connection,Comedy,1998,Steven Spielberg,EUA,97,2025-04-14 17:23:08.276638
+161,The Final Directive,Action,2015,Martin Scorsese,EUA,99,2024-10-16 17:23:08.276638
+162,Silent Nights,Comedy,1982,Martin Scorsese,EUA,85,2025-02-24 17:23:08.276638
+163,Sun Rising,Action,2000,Walter Salles,Brasil,108,2025-06-16 17:23:08.276638
+164,The Shadow Curse,Horror,2012,Christopher Nolan,EUA,154,2024-10-17 17:23:08.276638
+165,Shadow Nights,Comedy,2001,Bong Joon-ho,Coreia do Sul,160,2025-05-26 17:23:08.276638
+166,Beyond Dream,Sci-Fi,1977,Fernando Meirelles,Brasil,107,2025-06-15 17:23:08.276638
+167,Lost Run,Action,2016,Ridley Scott,Reino Unido,117,2025-03-26 17:23:08.276638
+168,Final Run,Action,1967,Quentin Tarantino,EUA,146,2025-09-20 17:23:08.276638
+169,The Last Midnight,Drama,2016,Alfred Hitchcock,Reino Unido,162,2025-02-03 17:23:08.276638
+170,Sun Run,Action,2002,Jean-Luc Godard,França,171,2025-08-16 17:23:08.276638
+171,Shadows of Dream,Drama,1975,Kim Jee-woon,Coreia do Sul,137,2025-07-01 17:23:08.276638
+172,Shadow Nights,Comedy,1988,Martin Scorsese,EUA,143,2025-03-28 17:23:08.276638
+173,Shadows of Final,Drama,1981,Quentin Tarantino,EUA,121,2024-11-09 17:23:08.276638
+174,Lost Nights,Comedy,2002,Park Chan-wook,Coreia do Sul,148,2025-06-24 17:23:08.276638
+175,The Final Protocol,Action,1991,Kim Jee-woon,Coreia do Sul,162,2025-06-03 17:23:08.276638
+176,Shadows of Dream,Drama,1998,Alfred Hitchcock,Reino Unido,145,2025-06-04 17:23:08.276638
+177,The Dream Connection,Crime,2013,Steven Spielberg,EUA,136,2025-03-18 17:23:08.276638
+178,The Final Directive,Action,2006,Christopher Nolan,Reino Unido,129,2025-05-25 17:23:08.276638
+179,Echoes of Silent,Drama,1992,Fernando Meirelles,Brasil,142,2025-04-06 17:23:08.276638
+180,Sun Rising,Action,2021,Bong Joon-ho,Coreia do Sul,147,2025-01-14 17:23:08.276638
+181,Shadow Run,Action,1993,Martin Scorsese,EUA,131,2025-06-17 17:23:08.276638
+182,Shadows of Shadow,Drama,1977,Christopher Nolan,EUA,89,2025-07-28 17:23:08.276638
+183,The Final Connection,Comedy,2001,Kim Jee-woon,Coreia do Sul,99,2025-02-08 17:23:08.276638
+184,The Final Connection,Crime,1992,Hayao Miyazaki,Japão,160,2025-01-20 17:23:08.276638
+185,Lost Run,Action,1973,Martin Scorsese,EUA,130,2025-08-24 17:23:08.276638
+186,The Silent Adventure,Comedy,2009,Danny Boyle,Reino Unido,87,2025-09-07 17:23:08.276638
+187,Echo Party,Comedy,1982,Martin Scorsese,EUA,164,2025-06-23 17:23:08.276638
+188,Echoes of Final,Drama,2003,Takashi Miike,Japão,98,2025-06-08 17:23:08.276638
+189,The Dream Directive,Action,1994,Akira Kurosawa,Japão,178,2025-02-15 17:23:08.276638
+190,The Last Final,Drama,2013,Quentin Tarantino,EUA,168,2024-10-16 17:23:08.276638
+191,Shadows of Midnight,Drama,1985,Quentin Tarantino,EUA,89,2025-02-16 17:23:08.276638
+192,Echo City,Crime,2023,Guel Arraes,Brasil,118,2025-07-24 17:23:08.276638
+193,The Silent Effect,Sci-Fi,2022,Christopher Nolan,Reino Unido,157,2025-06-07 17:23:08.276638
+194,Sun Legacy,Sci-Fi,1998,Christopher Nolan,EUA,95,2025-09-07 17:23:08.276638
+195,Shadow Party,Comedy,1972,Bong Joon-ho,Coreia do Sul,150,2025-01-16 17:23:08.276638
+196,Silent Rising,Action,1970,Park Chan-wook,Coreia do Sul,88,2025-05-14 17:23:08.276638
+197,The Midnight Effect,Sci-Fi,2003,Quentin Tarantino,EUA,140,2024-11-06 17:23:08.276638
+198,The Shadow Promise,Drama,1983,Bong Joon-ho,Coreia do Sul,154,2025-05-07 17:23:08.276638
+199,The Midnight Effect,Sci-Fi,1985,Steven Spielberg,EUA,166,2025-03-24 17:23:08.276638
+200,Midnight Run,Action,1982,Martin Scorsese,EUA,115,2025-08-14 17:23:08.276638
