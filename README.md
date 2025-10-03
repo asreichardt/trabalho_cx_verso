@@ -62,7 +62,7 @@ Sistema de análise de dados para plataforma de streaming de filmes.
 
 ##  Variáveis de Ambiente
 
-Copie `.env.example` para `.env` e configure as credenciais do banco.
+Copie `.env.example` para `.env` e configure as senhas do banco.
 
 ##  Licença
 
