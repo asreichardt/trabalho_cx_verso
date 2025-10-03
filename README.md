@@ -37,7 +37,6 @@ Sistema de análise de dados para plataforma de streaming de filmes.
 ##  Funcionalidades
 
 -  Cadastro de filmes e usuários
--  
 -  Sistema de avaliações (1-5 estrelas)
 -  Dashboard analítico com rankings
 -  Data Lake → Data Warehouse → Data Mart
